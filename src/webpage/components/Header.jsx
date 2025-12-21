@@ -6,9 +6,6 @@ export function Header() {
 
 
             <div className="flex items-center gap-3 cursor-pointer group">
-                <div className="w-10 h-10 bg-gradient-to-br from-jade-green to-bright-sky rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-jade-green/50 transition-shadow duration-300">
-                    <span className="text-white font-bold text-xl">M</span>
-                </div>
                 <span className="text-xl font-bold bg-gradient-to-r from-yale-blue to-jade-green bg-clip-text text-transparent">Dragon-Tech</span>
             </div>
 
