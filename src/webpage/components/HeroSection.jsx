@@ -9,55 +9,35 @@ export function HeroSection() {
     const subtitleRef = useRef(null)
     const descriptionRef = useRef(null)
     const buttonsRef = useRef(null)
-    const orb1Ref = useRef(null)
-    const orb2Ref = useRef(null)
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
-            const tl = gsap.timeline({ defaults: { ease: "power3.out" } })
+            const tl = gsap.timeline({ defaults: { ease: "power2.out" } })
 
             tl.fromTo(badgeRef.current,
-                { opacity: 0, y: 30, scale: 0.9 },
-                { opacity: 1, y: 0, scale: 1, duration: 0.8 }
+                { opacity: 0, y: 20 },
+                { opacity: 1, y: 0, duration: 0.6 }
             )
                 .fromTo(titleRef.current,
-                    { opacity: 0, y: 50 },
-                    { opacity: 1, y: 0, duration: 0.8 },
-                    "-=0.4"
+                    { opacity: 0, y: 30 },
+                    { opacity: 1, y: 0, duration: 0.7 },
+                    "-=0.3"
                 )
                 .fromTo(subtitleRef.current,
-                    { opacity: 0, y: 50 },
-                    { opacity: 1, y: 0, duration: 0.8 },
-                    "-=0.5"
-                )
-                .fromTo(descriptionRef.current,
                     { opacity: 0, y: 30 },
                     { opacity: 1, y: 0, duration: 0.7 },
                     "-=0.4"
                 )
-                .fromTo(buttonsRef.current.children,
-                    { opacity: 0, y: 20, scale: 0.95 },
-                    { opacity: 1, y: 0, scale: 1, duration: 0.6, stagger: 0.15 },
+                .fromTo(descriptionRef.current,
+                    { opacity: 0, y: 20 },
+                    { opacity: 1, y: 0, duration: 0.6 },
                     "-=0.3"
                 )
-
-            gsap.to(orb1Ref.current, {
-                y: -30,
-                x: 20,
-                duration: 4,
-                repeat: -1,
-                yoyo: true,
-                ease: "sine.inOut"
-            })
-
-            gsap.to(orb2Ref.current, {
-                y: 40,
-                x: -30,
-                duration: 5,
-                repeat: -1,
-                yoyo: true,
-                ease: "sine.inOut"
-            })
+                .fromTo(buttonsRef.current.children,
+                    { opacity: 0, y: 15 },
+                    { opacity: 1, y: 0, duration: 0.5, stagger: 0.1 },
+                    "-=0.2"
+                )
         }, heroRef)
 
         return () => ctx.revert()
@@ -66,33 +46,40 @@ export function HeroSection() {
     return (
         <div ref={heroRef} className="min-h-[calc(100vh-5rem)] w-full relative bg-cover bg-center bg-no-repeat flex items-center justify-center overflow-hidden" style={{ backgroundImage: `url(${heroBackground})` }}>
 
-            <div className="absolute inset-0 bg-gradient-to-br from-yale-blue/80 via-yale-blue/60 to-jade-green/40 z-10"></div>
-
-            <div ref={orb1Ref} className="absolute top-20 left-10 w-72 h-72 bg-jade-green/20 rounded-full blur-3xl"></div>
-            <div ref={orb2Ref} className="absolute bottom-20 right-10 w-96 h-96 bg-bright-sky/20 rounded-full blur-3xl"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/85 to-secondary/80 z-10"></div>
 
             <div className="relative z-20 text-center px-6 max-w-4xl">
-                <span ref={badgeRef} className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium mb-6 border border-white/20 opacity-0">
-                    <svg className="w-5 h-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.88 117.29"><defs><style>{`.new-cls-1{fill:#c00;}.new-cls-2{fill:#e40001;fill-rule:evenodd;}.new-cls-3{fill:#fff;}`}</style></defs><path className="new-cls-1" d="M61.39,7.26,77.3.37A4.43,4.43,0,0,1,82.87,2.2L91.6,17l16.91,3.78A4.43,4.43,0,0,1,112,25.56L110.3,42.69l11.47,13a4.44,4.44,0,0,1-.24,6.12l-11.2,12.64L112,91.74a4.41,4.41,0,0,1-3.6,4.76l-16.65,3.68-8.84,14.93a4.44,4.44,0,0,1-5.77,1.73L61.49,110l-15.91,6.88A4.43,4.43,0,0,1,40,115.1l-8.73-14.84L14.37,96.47a4.42,4.42,0,0,1-3.45-4.73L12.58,74.6l-11.47-13a4.43,4.43,0,0,1,.24-6.12L12.54,42.83,10.92,25.56a4.42,4.42,0,0,1,3.6-4.77l16.65-3.68L40,2.18A4.42,4.42,0,0,1,45.78.46l15.61,6.8Z" /><polygon className="new-cls-2" points="61.37 12.08 79.05 4.43 88.76 20.93 107.56 25.14 105.71 44.19 118.44 58.65 105.75 72.97 107.56 92.15 88.86 96.28 79.05 112.86 61.51 105.21 43.82 112.86 34.12 96.36 15.32 92.15 17.17 73.1 4.44 58.65 17.13 44.32 15.32 25.14 34.01 21.01 43.82 4.43 61.37 12.08 61.37 12.08" /><path className="new-cls-1" d="M38.93,77.88l-.23-.2a3.56,3.56,0,0,1-2.57,2.7l-7.37,2a3.57,3.57,0,0,1-4.36-2.52L18.23,56.79a3.56,3.56,0,0,1,2.52-4.36l6.93-1.85a3.55,3.55,0,0,1,3.46.94l.13.11a3.55,3.55,0,0,1,2.57-2.7l7.37-2a3.59,3.59,0,0,1,2,0,3.61,3.61,0,0,1,1.71-1l16.22-4.34a3.26,3.26,0,0,1,.76-.12l.2-.1a3.69,3.69,0,0,1,.56-.19l7.66-2.05a3.51,3.51,0,0,1,2.54.27,3.57,3.57,0,0,1,2.07-1.51l5.64-1.51a3.54,3.54,0,0,1,2.55.27,3.59,3.59,0,0,1,2.06-1.5l7.7-2.07a3.56,3.56,0,0,1,4.36,2.52,3.31,3.31,0,0,1,.12.7l2.54,23.86A3.55,3.55,0,0,1,97.26,64l-9.62,2.58a3.57,3.57,0,0,1-2-.06,3.61,3.61,0,0,1-1.75,1.08l-9.62,2.58a3.55,3.55,0,0,1-2.72-.38,3.56,3.56,0,0,1-2.18,1.69l-16.41,4.4a3.5,3.5,0,0,1-2,0,3.53,3.53,0,0,1-1.71,1l-6.93,1.86a3.55,3.55,0,0,1-3.36-.85Z" /><path className="new-cls-3" d="M41.37,75.29l-7.83-6.67A3.93,3.93,0,0,1,32.7,67l-.15,0,2.66,10-7.37,2L21.67,55.87,28.6,54l7.83,6.67a4,4,0,0,1,.85,1.67l.14,0-2.66-10,7.37-2,6.17,23-6.93,1.86Zm23-15.5-7.38,2,.75,2.8,9-2.42,1.58,5.9L52,72.45,45.82,49.4,62,45.06l.66,6.14-7.93,2.13.83,3.09,7.37-2,1.44,5.34ZM86.08,38.61l7.7-2.06,2.56,24-9.62,2.58-4-8-.44.12.61,8.93L73.3,66.74,63.51,44.66l7.71-2.06L76.4,55l.22-.06-.79-13.58,5.64-1.51L87.53,52l.23,0L86.08,38.61Z" /></svg>
-                    Nueva Colección Disponible
+                <span ref={badgeRef} className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-md text-white/90 text-sm font-medium mb-6 border border-white/10 opacity-0">
+
+                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                    Nueva Colección 2025
                 </span>
 
-                <h1 className="text-5xl md:text-7xl font-black mb-6 leading-tight">
-                    <span ref={titleRef} className="text-white drop-shadow-2xl inline-block opacity-0">Potencia Tu</span>
+                <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                    <span ref={titleRef} className="text-white inline-block opacity-0">Tecnología de</span>
                     <br />
-                    <span ref={subtitleRef} className="bg-gradient-to-r from-jade-green via-bright-sky to-jade-green bg-clip-text text-transparent inline-block opacity-0">Mundo Digital</span>
+                    <span ref={subtitleRef} className="text-jade-green inline-block opacity-0">Alto Rendimiento</span>
                 </h1>
 
-                <p ref={descriptionRef} className="text-xl md:text-2xl mb-10 text-white/80 font-light max-w-2xl mx-auto leading-relaxed opacity-0">
-                    Descubre los mejores productos tecnológicos con la calidad y el rendimiento que mereces.
+                <p ref={descriptionRef} className="text-lg md:text-xl mb-10 text-white/80 font-normal max-w-2xl mx-auto leading-relaxed opacity-0">
+                    Equipos y componentes de última generación para profesionales y entusiastas. Calidad certificada, precios competitivos.
                 </p>
 
                 <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <button className="px-10 py-4 bg-gradient-to-r from-jade-green to-bright-sky text-white font-bold text-lg rounded-full shadow-2xl shadow-jade-green/40 hover:-translate-y-1 hover:shadow-3xl hover:shadow-jade-green/50 transition-all duration-300 cursor-pointer border-none opacity-0">
-                        Comprar Ahora →
+                    <button className="px-8 py-3.5 bg-jade-green text-white font-semibold text-base rounded-lg shadow-lg hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300 cursor-pointer border-none opacity-0 flex items-center gap-2">
+                        Explorar Catálogo
+                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
+                        </svg>
                     </button>
-                    <button className="px-10 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold text-lg rounded-full border-2 border-white/30 hover:bg-white/20 hover:-translate-y-1 transition-all duration-300 cursor-pointer opacity-0">
-                        Ver Catálogo
+                    <button className="px-8 py-3.5 bg-transparent text-white font-semibold text-base rounded-lg border border-white/30 hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer opacity-0 flex items-center gap-2">
+                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+                        </svg>
+                        Contactar Ventas
                     </button>
                 </div>
             </div>

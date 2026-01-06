@@ -1,18 +1,25 @@
 @import "tailwindcss";
 
 @theme {
-    --color-jade-green: #20bf55;
-    --color-yale-blue: #0b4f6c;
-    --color-bright-sky: #01baef;
-    --color-ghost-white: #fbfbff;
-    --color-grey: #757575;
-    --font-family-sans: 'Inter', system-ui, sans-serif;
-    --font-family-display: 'Space Grotesk', sans-serif;
+
+    --color-primary: #1a1a2e;
+    --color-secondary: #16213e;
+    --color-accent: #0f3460;
+    --color-highlight: #e94560;
+    --color-jade-green: #00d4aa;
+    --color-yale-blue: #1a1a2e;
+    --color-bright-sky: #00b8d4;
+    --color-ghost-white: #f8f9fa;
+    --color-grey: #6c757d;
+    --color-dark-grey: #2d3436;
+    --color-silver: #a4b0be;
+    --font-family-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-family-display: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body {
     background-color: var(--color-ghost-white);
-    color: var(--color-yale-blue);
+    color: var(--color-primary);
     font-family: var(--font-family-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -25,5 +32,36 @@ h4,
 h5,
 h6 {
     font-family: var(--font-family-display);
-    letter-spacing: -0.02em;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-jade-green), var(--color-bright-sky));
+    color: white;
+    font-weight: 600;
+    padding: 0.875rem 2rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 212, 170, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 212, 170, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    font-weight: 600;
+    padding: 0.875rem 2rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: var(--color-primary);
+    color: white;
 }
